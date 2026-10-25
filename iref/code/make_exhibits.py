@@ -279,18 +279,20 @@ def fig_indirect():
     tr = pd.read_csv(os.path.join(R, "sim_indirect_exchange_BN", "truth.csv"))
     real = pd.read_csv(os.path.join(R, "real_estimates.csv"))
     real = real[real.network == "exchange:BN"].set_index(["estimator", "centring", "hl_coef"])
-    ch, clo, chi = 0.34, 0.28, 0.40
-    m = os.path.join(R, "indirect_match_exchange_BN.csv")
-    if os.path.exists(m):
-        r = pd.read_csv(m).iloc[0]
-        ch, clo, chi = r.c_hat, r.c_lo, r.c_hi
+    r = pd.read_csv(os.path.join(R, "indirect_match_exchange_BN.csv")).iloc[0]
+    ch, clo, chi, implied = r.c_hat, r.c_lo_adj, r.c_hi_adj, r.long      # misfit-adjusted set, as in Table 7
     keys = [("var3", "package", 15), ("var3", "ewma", 15), ("harvar", "package", 15),
             ("harvar", "ewma", 15), ("harvar", "package", 60), ("harvar", "ewma", 60)]
-    fig, axes = plt.subplots(2, 4, figsize=(6.3, 3.4), sharex=True)
+    fig, axes = plt.subplots(2, 4, figsize=(6.3, 3.6), sharex=True)
     axes = axes.ravel()
     ax = axes[0]
     ax.axvspan(clo, chi, color=GRID, alpha=0.8, lw=0, zorder=0)
     ax.plot(tr.c, tr["long"], color=INK, lw=1.4, marker="D", ms=3.5)
+    ax.plot([ch, ch], [tr["long"].min(), implied], color=INK2, lw=0.8, ls="--", zorder=1)
+    ax.plot([0, ch], [implied, implied], color=INK2, lw=0.8, ls="--", zorder=1)
+    ax.plot(ch, implied, marker="o", ms=6, color=AQUA, mec="white", mew=0.9, zorder=4)
+    ax.annotate(f"implied {implied:.1f}\nat c = {ch:.2f}", (ch, implied), xytext=(6, 4), textcoords="offset points",
+                fontsize=6.5, color=INK, va="bottom")
     ax.set_title("True long band", loc="left", fontsize=7.5, color=INK)
     clean(ax)
     for ax, (est, cent, hl) in zip(axes[1:], keys):
@@ -304,9 +306,11 @@ def fig_indirect():
         ax.set_title(f"{short}, {hl} d", loc="left", fontsize=7.5, color=INK)
         clean(ax)
     axes[-1].axis("off")
-    axes[-1].text(0.0, 0.9, "Lines: simulated long band\n(mean; band: seed range)\nDotted: real estimate\n"
-                  f"Shaded: c in [{clo:.2f}, {chi:.2f}]", transform=axes[-1].transAxes, fontsize=7, color=INK2, va="top")
-    for ax in axes[4:7]:
+    axes[-1].text(0.0, 0.95, "Lines: simulated long band\n(mean; band: seed range)\nDotted: real estimate\n"
+                  f"Shaded: c in [{clo:.2f}, {chi:.2f}]\npkg: package centring\nEWMA: causal centring\n"
+                  "15 d, 60 d: window half-life", transform=axes[-1].transAxes, fontsize=6.8, color=INK2, va="top")
+    axes[3].xaxis.set_tick_params(labelbottom=True)   # the panel below it is blank
+    for ax in axes[3:7]:
         ax.set_xlabel("Drift share c")
     for ax in (axes[0], axes[4]):
         ax.set_ylabel("Points")
