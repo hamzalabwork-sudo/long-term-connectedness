@@ -82,10 +82,12 @@ for n in exchange:BN instrument:BTCS instrument:BTCP instrument:ETHS instrument:
   d=results/sim_indirect_${n/:/_}
   python code/sim_indirect.py --network $n --seeds 2 --out $d     # Binance in the paper: --seeds 3
   python code/match_indirect.py --network $n --sim $d/estimates.csv --truth $d/truth.csv
-done                                          # Table 7, Fig. 4
+done                                          # Table 7, Fig. 5
 
+python code/pairwise.py                       # pairwise connectedness matrices
+python code/network_figs.py                   # Fig. 4, Table S11, Fig. S1
 python code/make_data_exhibits.py             # Table 1, Fig. 1
-python code/make_exhibits.py                  # Tables 4-7, S6 and Figs. 2-4 (written to paper/)
+python code/make_exhibits.py                  # Tables 4-7, S6 and Figs. 2, 3, 5 (written to paper/)
 ```
 Most steps take minutes on a workstation. The simulations (`sim_harvar.py`, `sim_indirect.py`) take one to two hours per run with 10-15 worker processes.
 

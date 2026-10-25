@@ -86,11 +86,13 @@ def tab_pseudo():
                      f"{s.obs_gap.mean():.1f} [{s.obs_gap.min():.1f}, {s.obs_gap.max():.1f}]\\\\")
     c = g[["pred_gap", "obs_gap"]].corr().iloc[0, 1]
     lines += [r"\bottomrule\end{tabular}\end{adjustbox}",
-              r"\par\smallskip\parbox{\linewidth}{\scriptsize Notes: Panel A: worlds of Section~\ref{sec:simdesign};$c$ scales the "
+              r"\par\smallskip\parbox{\linewidth}{\scriptsize Notes: Panel A: worlds of Section~\ref{sec:simdesign}; $c$ scales the "
               r"observed 30-day level added to a VAR(3) fitted to de-levelled data. Terms (A)+(B): pseudo-true value of a TVP-VAR(3) "
               r"with 15-day forgetting (Proposition~\ref{prop:pseudo}) minus truth, computed from autocovariances. Incl.\ (C): "
               r"adds the local-sampling term, computed from forgetting-weighted sample moments of simulated paths (3 seeds). "
-              r"Monte Carlo: the TVP-VAR estimates. Panel B: drift reading of each network (VAR(3) on de-levelled data plus the "
+              r"Monte Carlo: TVP-VAR(3) estimates in the simulations of Table S5 of the Online Appendix (volatility half-life 7 "
+              r"days; 10 replications in the drift world, 5 in the slow-spillover world); the runs behind Fig.~\ref{fig:tradeoff} "
+              r"use a 2-day volatility half-life and 3 seeds and differ from these by at most 0.3 points. Panel B: drift reading of each network (VAR(3) on de-levelled data plus the "
               rf"observed level); coefficient and EWMA half-lives matched; brackets: range over networks. Correlation over the 24 "
               rf"network--half-life cells: {c:.2f}.}}", r"\end{table}"]
     write("tab_pseudo", lines)
@@ -117,7 +119,7 @@ def tab_decay():
         h, d = best.loc[("hourly", n)], best.loc[("daily", n)]
         lines.append(f"{lab} & {h.h_coef:g} & {h.h_vol:g} & {d.h_coef:g} & {d.h_vol:g} & {fg.loc[n, 'score_sel']:.4f} & "
                      f"{kf.loc[n, 'score_sel']:.4f}\\\\")
-    lines += [r"\midrule", r"\multicolumn{7}{l}{\emph{Panel B: score difference against the selected coefficient half-life (nats per observation and series)}}\\",
+    lines += [r"\midrule", r"\multicolumn{7}{l}{\emph{Panel B: score difference against the modal selected coefficient half-life (nats per observation and series)}}\\",
               r" & \multicolumn{3}{c}{Selection period} & \multicolumn{3}{c}{Evaluation period}\\",
               r"\cmidrule(lr){2-4}\cmidrule(lr){5-7}",
               r"Coefficient half-life & Difference & $t$ & & Difference & $t$ & \\\midrule"]
@@ -131,8 +133,10 @@ def tab_decay():
               r"averaged over the four series, causal EWMA centring with the coefficient half-life; selection period 2022--2024, "
               r"evaluation period January 2025--September 2026. Hourly grids: coefficient 1--365 days, volatility 0.25--30 days; "
               r"daily grids: coefficient 1--730 days, volatility 1--365 days. Kalman: random-walk coefficients with state "
-              r"covariance $q\,V_{\mathrm{OLS}}$, $q$ selected on the same criterion (volatility half-life 2 days). Panel B: "
-              r"network-average score difference, Newey--West $t$ (lag one week); volatility half-life at its selected value.}",
+              r"covariance $q\,V_{\mathrm{OLS}}$, $q$ selected on the same criterion. Score columns: coefficient half-life 15 days, "
+              r"volatility half-life fixed at 2 days for both filters. Panel B: network-average score difference against 15 days "
+              r"(hourly) and 120 days (daily), Newey--West $t$ (lag one week); volatility half-life fixed at 2 days (hourly) and "
+              r"60 days (daily).}",
               r"\end{table}"]
     write("tab_decay", lines)
 
@@ -190,7 +194,8 @@ def tab_indirect():
               r"and short bands of six estimators (12 moments). Brackets: values of $c$ with $Q\le Q_{\min}+3.84\,\max(1,Q_{\min}/11)$, "
               r"i.e.\ a 95\% set whose threshold is scaled by the misfit of the one-parameter family, and the implied long bands. "
               r"Implied long and short: true bands of the selected world. Standard estimator: TVP-VAR(3), package centring, "
-              r"15-day window. Seeds: simulated paths per value of $c$.}", r"\end{table}"]
+              r"15-day window, volatility half-life 2 days (31.7 on average with the 7-day volatility half-life of \citet{shi2026}, "
+              r"Table~\ref{tab:replication}). Seeds: simulated paths per value of $c$.}", r"\end{table}"]
     write("tab_indirect", lines)
 
 
