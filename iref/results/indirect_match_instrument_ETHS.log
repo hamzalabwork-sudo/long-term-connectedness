@@ -1,0 +1,27 @@
+joint match: c_hat = 0.345, implied true long = 39.1, short = 26.8, misfit Q = 37.3 on 12 moments (1 parameter)
+  c set (Q <= Qmin + 3.84): [0.310, 0.383] -> long in [38.0, 40.1]
+  misfit-adjusted set (dispersion 3.4): [0.278, 0.415] -> long in [37.1, 41.0]
+
+fit at c_hat (real vs simulated, sim sd):
+  harvar-ewma-15d-long       real  26.7  sim  27.1  sd  0.4
+  harvar-ewma-15d-short      real  36.7  sim  36.1  sd  0.2
+  harvar-ewma-60d-long       real  34.1  sim  34.7  sd  0.8
+  harvar-ewma-60d-short      real  30.8  sim  30.2  sd  0.6
+  harvar-package-15d-long    real  33.7  sim  32.3  sd  0.5
+  harvar-package-15d-short   real  31.4  sim  32.2  sd  0.4
+  harvar-package-60d-long    real  39.3  sim  37.8  sd  0.6
+  harvar-package-60d-short   real  26.9  sim  27.9  sd  0.5
+  var3-ewma-15d-long         real  21.1  sim  22.1  sd  0.8
+  var3-ewma-15d-short        real  33.9  sim  32.9  sd  0.7
+  var3-package-15d-long      real  31.3  sim  29.6  sd  1.1
+  var3-package-15d-short     real  25.8  sim  26.8  sd  0.9
+
+per-estimator inversion of the long band:
+  harvar ewma     15d  real  26.7  -> c 0.41, true long  37.4
+  harvar ewma     60d  real  34.1  -> c 0.39, true long  38.0
+  harvar package  15d  real  33.7  -> c 0.08, true long  45.5
+  harvar package  60d  real  39.3  -> c 0.18, true long  43.2
+  var3   ewma     15d  real  21.1  -> c 0.45, true long  36.1
+  var3   package  15d  real  31.3  -> c 0.21, true long  42.6
+
+simulated truth: long {0.0: 47.2, 0.25: 41.8, 0.5: 34.7, 0.75: 28.6, 1.0: 25.7}

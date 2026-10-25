@@ -1,0 +1,6 @@
+# keep line endings as committed (LF) on every platform
+* text=auto eol=lf
+# hashed document: byte-exact, never converted
+notes/preregistration.md -text
+notes/preregistration.sha256 -text
+notes/unseal.log -text

@@ -1,0 +1,1 @@
+TEST UNSEALED 2026-10-21T10:19:57Z by user approval; spec = preregistration.md sha256 23fcac79e722369f985f7b011bda4fb12646eb696c7147c3f321cfc019d436c0; runs: rt_ewma15d_true (primary), rt_window_true, rt_tvint_true, pkg_full_true

@@ -1,0 +1,165 @@
+{
+ "args": {
+  "panel": "data/processed/logrv_ds_causal.csv.gz",
+  "conn_root": "results/conn",
+  "conn": [
+   "rtc_ewma15d_true",
+   "rtc_window_true",
+   "rtc_tvint_true",
+   "pkgc_full_true"
+  ],
+  "split": "validation",
+  "train_start": "2021-01-31 00:00",
+  "horizons": [
+   1,
+   8,
+   24,
+   168
+  ],
+  "out": "results/forecast_causal"
+ },
+ "models": {
+  "M0": [
+   "own"
+  ],
+  "M1": [
+   "own",
+   "cross"
+  ],
+  "M2": [
+   "own",
+   "cross",
+   "time@rtc_ewma15d_true"
+  ],
+  "M0+time": [
+   "own",
+   "time@rtc_ewma15d_true"
+  ],
+  "M0+0-8": [
+   "own",
+   "0-8@rtc_ewma15d_true"
+  ],
+  "M0+8-24": [
+   "own",
+   "8-24@rtc_ewma15d_true"
+  ],
+  "M0+24-inf": [
+   "own",
+   "24-inf@rtc_ewma15d_true"
+  ],
+  "E0": [
+   "own",
+   "ew"
+  ],
+  "S_time": [
+   "own",
+   "sw@time"
+  ],
+  "S_0-8": [
+   "own",
+   "sw@0-8"
+  ],
+  "S_8-24": [
+   "own",
+   "sw@8-24"
+  ],
+  "S_24-inf": [
+   "own",
+   "sw@24-inf"
+  ],
+  "M3_0-8": [
+   "own",
+   "cross",
+   "0-8@rtc_ewma15d_true"
+  ],
+  "M3_8-24": [
+   "own",
+   "cross",
+   "8-24@rtc_ewma15d_true"
+  ],
+  "M3_24-inf": [
+   "own",
+   "cross",
+   "24-inf@rtc_ewma15d_true"
+  ],
+  "M4": [
+   "own",
+   "cross",
+   "0-8@rtc_ewma15d_true",
+   "8-24@rtc_ewma15d_true",
+   "24-inf@rtc_ewma15d_true"
+  ],
+  "M3_0-8@rtc_window_true": [
+   "own",
+   "cross",
+   "0-8@rtc_window_true"
+  ],
+  "M3_8-24@rtc_window_true": [
+   "own",
+   "cross",
+   "8-24@rtc_window_true"
+  ],
+  "M3_24-inf@rtc_window_true": [
+   "own",
+   "cross",
+   "24-inf@rtc_window_true"
+  ],
+  "M4@rtc_window_true": [
+   "own",
+   "cross",
+   "0-8@rtc_window_true",
+   "8-24@rtc_window_true",
+   "24-inf@rtc_window_true"
+  ],
+  "M3_0-8@rtc_tvint_true": [
+   "own",
+   "cross",
+   "0-8@rtc_tvint_true"
+  ],
+  "M3_8-24@rtc_tvint_true": [
+   "own",
+   "cross",
+   "8-24@rtc_tvint_true"
+  ],
+  "M3_24-inf@rtc_tvint_true": [
+   "own",
+   "cross",
+   "24-inf@rtc_tvint_true"
+  ],
+  "M4@rtc_tvint_true": [
+   "own",
+   "cross",
+   "0-8@rtc_tvint_true",
+   "8-24@rtc_tvint_true",
+   "24-inf@rtc_tvint_true"
+  ],
+  "M3_0-8@pkgc_full_true": [
+   "own",
+   "cross",
+   "0-8@pkgc_full_true"
+  ],
+  "M3_8-24@pkgc_full_true": [
+   "own",
+   "cross",
+   "8-24@pkgc_full_true"
+  ],
+  "M3_24-inf@pkgc_full_true": [
+   "own",
+   "cross",
+   "24-inf@pkgc_full_true"
+  ],
+  "M4@pkgc_full_true": [
+   "own",
+   "cross",
+   "0-8@pkgc_full_true",
+   "8-24@pkgc_full_true",
+   "24-inf@pkgc_full_true"
+  ]
+ },
+ "bands_primary": [
+  "0-8",
+  "8-24",
+  "24-inf"
+ ],
+ "eval_hours": 8784
+}

@@ -1,0 +1,218 @@
+{
+ "args": {
+  "panel": "data/processed/logrv_ds.csv.gz",
+  "start": "2021-01-01",
+  "end": "2025-12-31 23:00",
+  "networks": [
+   "instrument:BTCS",
+   "instrument:BTCP",
+   "instrument:ETHS",
+   "instrument:ETHP",
+   "exchange:BN",
+   "exchange:OKX",
+   "exchange:BG",
+   "exchange:BF"
+  ],
+  "mode": "realtime",
+  "prior_hours": 720,
+  "demean": "ewma",
+  "demean_halflife": 360.0,
+  "intercept": false,
+  "nlag": 3,
+  "nfore": 720,
+  "half_lives": [
+   15,
+   7
+  ],
+  "periods": [
+   4.0,
+   8.0,
+   24.0,
+   168.0
+  ],
+  "true_periods": false,
+  "device": "cpu",
+  "out": "results/conn",
+  "name": "rob_five_ewma"
+ },
+ "kappa1": 0.9980764435756287,
+ "kappa2": 0.9958826236582974,
+ "partition": [
+  3.141602653589793,
+  0.7853981633974483,
+  0.39269908169872414,
+  0.1308996938995747,
+  0.018699956271367817,
+  0.0
+ ],
+ "band_names": [
+  "0-4",
+  "4-8",
+  "8-24",
+  "24-168",
+  "168-inf"
+ ],
+ "hours": 43824,
+ "networks": {
+  "instrument:BTCS": {
+   "cols": [
+    "BTCS_BN",
+    "BTCS_OKX",
+    "BTCS_BG",
+    "BTCS_BF"
+   ],
+   "nan_filled": 32,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 6.5,
+   "seconds_total": 40.2,
+   "mean_TCI_time": 74.38494117770176,
+   "mean_TCI_bands": {
+    "0-4": 22.267379912796322,
+    "4-8": 9.06458600287677,
+    "8-24": 19.362420741249693,
+    "24-168": 18.855858715763162,
+    "168-inf": 4.834695802339159
+   }
+  },
+  "instrument:BTCP": {
+   "cols": [
+    "BTCP_BN",
+    "BTCP_OKX",
+    "BTCP_BG",
+    "BTCP_BF"
+   ],
+   "nan_filled": 24,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 6.7,
+   "seconds_total": 40.9,
+   "mean_TCI_time": 74.45847126000464,
+   "mean_TCI_bands": {
+    "0-4": 22.592478384319918,
+    "4-8": 9.108319154698789,
+    "8-24": 19.32060135674111,
+    "24-168": 18.665432014176503,
+    "168-inf": 4.771640349256011
+   }
+  },
+  "instrument:ETHS": {
+   "cols": [
+    "ETHS_BN",
+    "ETHS_OKX",
+    "ETHS_BG",
+    "ETHS_BF"
+   ],
+   "nan_filled": 34,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 6.0,
+   "seconds_total": 40.7,
+   "mean_TCI_time": 74.25986511582613,
+   "mean_TCI_bands": {
+    "0-4": 23.805208006557507,
+    "4-8": 9.318904321520362,
+    "8-24": 19.166608945579807,
+    "24-168": 17.55722295787483,
+    "168-inf": 4.411920879828101
+   }
+  },
+  "instrument:ETHP": {
+   "cols": [
+    "ETHP_BN",
+    "ETHP_OKX",
+    "ETHP_BG",
+    "ETHP_BF"
+   ],
+   "nan_filled": 24,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 5.6,
+   "seconds_total": 40.3,
+   "mean_TCI_time": 74.32729736161998,
+   "mean_TCI_bands": {
+    "0-4": 24.216269271784878,
+    "4-8": 9.413648260262933,
+    "8-24": 19.116596474131015,
+    "24-168": 17.26006410299083,
+    "168-inf": 4.320719255034157
+   }
+  },
+  "exchange:BN": {
+   "cols": [
+    "BTCS_BN",
+    "BTCP_BN",
+    "ETHS_BN",
+    "ETHP_BN"
+   ],
+   "nan_filled": 8,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 5.4,
+   "seconds_total": 39.0,
+   "mean_TCI_time": 70.25819649739111,
+   "mean_TCI_bands": {
+    "0-4": 21.43406701897614,
+    "4-8": 8.535235860118762,
+    "8-24": 17.923901782680186,
+    "24-168": 17.763490161958124,
+    "168-inf": 4.60150167083401
+   }
+  },
+  "exchange:OKX": {
+   "cols": [
+    "BTCS_OKX",
+    "BTCP_OKX",
+    "ETHS_OKX",
+    "ETHP_OKX"
+   ],
+   "nan_filled": 28,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 5.4,
+   "seconds_total": 38.1,
+   "mean_TCI_time": 70.25780461336866,
+   "mean_TCI_bands": {
+    "0-4": 21.428971512417924,
+    "4-8": 8.538742481191942,
+    "8-24": 17.945100668430133,
+    "24-168": 17.74741783557312,
+    "168-inf": 4.597572114046931
+   }
+  },
+  "exchange:BG": {
+   "cols": [
+    "BTCS_BG",
+    "BTCP_BG",
+    "ETHS_BG",
+    "ETHP_BG"
+   ],
+   "nan_filled": 9,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 5.9,
+   "seconds_total": 36.8,
+   "mean_TCI_time": 70.14123119134761,
+   "mean_TCI_bands": {
+    "0-4": 21.111317880348313,
+    "4-8": 8.507962374460712,
+    "8-24": 17.992502094217546,
+    "24-168": 17.88566098445241,
+    "168-inf": 4.643787858087444
+   }
+  },
+  "exchange:BF": {
+   "cols": [
+    "BTCS_BF",
+    "BTCP_BF",
+    "ETHS_BF",
+    "ETHP_BF"
+   ],
+   "nan_filled": 69,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 6.4,
+   "seconds_total": 36.3,
+   "mean_TCI_time": 69.14665645953403,
+   "mean_TCI_bands": {
+    "0-4": 20.278321751167944,
+    "4-8": 8.292958398783112,
+    "8-24": 17.891496208096864,
+    "24-168": 17.998703101226212,
+    "168-inf": 4.68517699590709
+   }
+  }
+ }
+}

@@ -1,0 +1,120 @@
+{
+ "args": {
+  "panel": "data/processed/logrv_ds_rv15.csv.gz",
+  "start": "2021-01-01",
+  "end": "2025-12-31 23:00",
+  "networks": [
+   "instrument:BTCS",
+   "instrument:BTCP",
+   "instrument:ETHS",
+   "instrument:ETHP"
+  ],
+  "mode": "package",
+  "prior_hours": null,
+  "demean": null,
+  "demean_halflife": null,
+  "intercept": false,
+  "nlag": 3,
+  "nfore": 720,
+  "half_lives": [
+   15,
+   7
+  ],
+  "periods": [
+   8,
+   24
+  ],
+  "true_periods": false,
+  "device": "cpu",
+  "out": "results/conn",
+  "name": "shilin_package_rv15"
+ },
+ "kappa1": 0.9980764435756287,
+ "kappa2": 0.9958826236582974,
+ "partition": [
+  3.141602653589793,
+  0.39269908169872414,
+  0.1308996938995747,
+  0.0
+ ],
+ "band_names": [
+  "0-8",
+  "8-24",
+  "24-inf"
+ ],
+ "hours": 43824,
+ "networks": {
+  "instrument:BTCS": {
+   "cols": [
+    "BTCS_BN",
+    "BTCS_OKX",
+    "BTCS_BG",
+    "BTCS_BF"
+   ],
+   "nan_filled": 31,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 7.0,
+   "seconds_total": 43.7,
+   "mean_TCI_time": 74.46954692958393,
+   "mean_TCI_bands": {
+    "0-8": 32.256902757065056,
+    "8-24": 17.616879498505135,
+    "24-inf": 24.59576467125139
+   }
+  },
+  "instrument:BTCP": {
+   "cols": [
+    "BTCP_BN",
+    "BTCP_OKX",
+    "BTCP_BG",
+    "BTCP_BF"
+   ],
+   "nan_filled": 18,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 6.8,
+   "seconds_total": 40.9,
+   "mean_TCI_time": 74.51732246048392,
+   "mean_TCI_bands": {
+    "0-8": 32.73742646308614,
+    "8-24": 17.640584674879076,
+    "24-inf": 24.139311319661157
+   }
+  },
+  "instrument:ETHS": {
+   "cols": [
+    "ETHS_BN",
+    "ETHS_OKX",
+    "ETHS_BG",
+    "ETHS_BF"
+   ],
+   "nan_filled": 32,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 7.0,
+   "seconds_total": 47.1,
+   "mean_TCI_time": 74.38367663860843,
+   "mean_TCI_bands": {
+    "0-8": 34.20044839223449,
+    "8-24": 17.123385920543964,
+    "24-inf": 23.05984232849032
+   }
+  },
+  "instrument:ETHP": {
+   "cols": [
+    "ETHP_BN",
+    "ETHP_OKX",
+    "ETHP_BG",
+    "ETHP_BF"
+   ],
+   "nan_filled": 24,
+   "unstable_steps": 0,
+   "seconds_tvpvar": 7.4,
+   "seconds_total": 53.0,
+   "mean_TCI_time": 74.42521311579372,
+   "mean_TCI_bands": {
+    "0-8": 34.706617552670096,
+    "8-24": 17.089926718455047,
+    "24-inf": 22.628668841974235
+   }
+  }
+ }
+}
